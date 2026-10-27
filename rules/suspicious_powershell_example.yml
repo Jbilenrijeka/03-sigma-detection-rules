@@ -1,0 +1,23 @@
+title: PowerShell Encoded Command Keyword - Training Example
+id: 9e1f7e24-7e6c-4c35-91a7-ff60b5c5d302
+status: experimental
+description: Illustrative keyword match for encoded PowerShell command usage; requires tuning and contextual review.
+references:
+  - https://sigmahq.io/
+author: Portfolio training example
+date: 2026-10-21
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith: '\powershell.exe'
+    CommandLine|contains:
+      - '-EncodedCommand'
+      - '-enc '
+  condition: selection
+falsepositives:
+  - Approved administrative automation
+level: medium
+tags:
+  - attack.execution

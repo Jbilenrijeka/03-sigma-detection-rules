@@ -1,0 +1,21 @@
+title: Repeated Failed Logons - Training Example
+id: 6f1ad24b-1e7c-4b89-9a9c-42d5c5f8a201
+status: experimental
+description: Flags a single failed logon event. Correlation over a time window is required to detect repeated failures reliably.
+references:
+  - https://sigmahq.io/
+author: Portfolio training example
+date: 2026-10-21
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID: 4625
+  condition: selection
+falsepositives:
+  - User mistyping a password
+  - Expired credentials or a misconfigured service
+level: low
+tags:
+  - attack.credential_access
